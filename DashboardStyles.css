@@ -21,7 +21,7 @@
 
 /* Estilos para el resto de la página */
 body {
-    background-image: url('FondoDashboard.png');
+    background-image: url('FondoConMV.gif');
     background-size: cover; /* Esto ajustará la imagen para que cubra todo el fondo */
     background-repeat: no-repeat; /* Esto evitará que la imagen se repita */
     font-family: Arial, sans-serif;
