@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="DashboardStyles.css">
+    <title>Lista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="index.html">
+    <style>
+        /* Estilo para el material de color en la parte superior */
+        .header {
+            background-color: #3498db; /* Color de fondo del encabezado */
+            padding: 20px; /* Espacio interno en la parte superior */
+            color: white; /* Color del texto */
+            text-align: left; /* Alinea el contenido a la izquierda */
+            border-bottom: 2px solid #2980b9; /* Borde inferior */
+            display: flex;
+            justify-content: space-between; /* Alinea el contenido hacia los lados */
+            align-items: center; /* Centrar verticalmente los elementos */
+            padding-left: 20px; /* Ajusta el espacio en la izquierda */
+        }
+
+        /* Estilo para los botones sin bordes */
+        .button-container {
+            display: flex; /* Para alinear los botones horizontalmente */
+            justify-content: center; /* Centrar los botones horizontalmente */
+            align-items: center; /* Centrar verticalmente los botones */
+            margin-top: -9px; /* Espacio entre el encabezado y los botones */
+        }
+
+        .button {
+            border: none; /* Sin bordes */
+            background-color: transparent; /* Fondo transparente */
+            cursor: pointer; /* Cambiar el cursor al pasar sobre los botones */
+            padding: 12px 21px; /* Espacio interno en los botones */
+            margin: 0 11px; /* Margen horizontal entre los botones */
+        }
+
+        /* Estilo para el nombre de usuario */
+        #nombre-usuario {
+            margin-left: 10px; /* Espacio entre "Bienvenido" y el nombre de usuario */
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Contenedor de botones sin bordes y centrados verticalmente -->
+    <div class="button-container">
+        <form action="juegos.html">
+            <button type="submit" class="button">Juegos</button>
+        </form>
+        <form action="multimedia.html">
+            <button type="submit" class="button">Multimedia</button>
+        </form>
+        <form action="aplicaciones.html">
+            <button type="submit" class="button">Aplicaciones</button>
+        </form>
+    </div>
+
+    <div class="header" id="header">
+        Bienvenido <span id="nombre-usuario"></span>
+    </div>
+
+    <ul class="lista">
+        <!-- Tu contenido aquí -->
+    </ul>
+
+    <script>
+        // Función para obtener el valor de un parámetro de la URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+       // Función para obtener el valor de un parámetro de la URL
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // Obtiene el nombre de usuario de la URL
+    var username = getParameterByName('nombre-usuario');
+
+    // Verifica si el nombre de usuario y la contraseña son correctos
+    if ((username === "Tommy" || username === "admin") && getParameterByName('contrasena') === "admin") {
+        // Modifica el contenido del encabezado
+        document.querySelector('.header').innerHTML = "Bienvenido, <span id='nombre-usuario'>" + username + "</span>";
+    }
+    </script>
+    
+    <a href="https://www.facebook.com/tommy.arque.7/" target="_blank" class="red-social">
+        <i class="fab fa-facebook"></i>
+    </a>
+
+</body>
+</html>
