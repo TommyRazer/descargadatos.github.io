@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="LoginStyles.css">
+    <title>Iniciar sesión</title>
+    <style>
+        /* Estilo para el contenedor circular de la imagen de perfil */
+        .profile-image-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 12px auto; /* Ajusta la separación entre la imagen y el texto y centra horizontalmente */
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+        }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajustar la imagen al tamaño del contenedor sin deformarla */
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciar sesión</h1>
+    <form action="javascript:void(0);" method="post" id="login-form">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" required><br>
+        
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <!-- Contenedor circular para la imagen de perfil -->
+        <div class="profile-image-container">
+            <img src="C:\Users\Tommy\Desktop\Mi Pagina Web\Imagenes\Perfil Foto.png" alt="Foto de perfil" id="profile-image">
+            <label for="profile-picture" class="profile-label">
+                <input type="file" id="profile-picture" accept="image/*" style="display: none;">
+                <i class="fas fa-pencil-alt"></i>
+            </label>
+        </div>
+        
+        <input type="submit" value="Iniciar sesión">
+    </form>
+
+    <!-- Elemento de carga -->
+    <div class="loading-container" id="loading-container" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Script para mostrar la imagen de perfil seleccionada -->
+    <script>
+        // Función para mostrar la imagen de perfil seleccionada
+        document.getElementById('profile-picture').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const profileImage = document.getElementById('profile-image');
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Simula el inicio de sesión y redirección
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Muestra la animación de carga
+            document.getElementById('loading-container').style.display = 'flex';
+
+            // Simula una carga de 2 segundos (ajusta el tiempo según tus necesidades)
+            setTimeout(function() {
+                window.location.href = 'dashboard.html'; // Redirige al usuario al dashboard
+            }, 2000); // 2000 milisegundos (2 segundos)
+        });
+    </script>
+</body>
+</html>
