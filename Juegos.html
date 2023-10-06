@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Juegos</title>
+    
+    <style>
+        /* Estilo para el encabezado "JUEGOS" */
+        .juegos-header {
+            background-color: #070707; /* Color de fondo del encabezado */
+            color: white; /* Color del texto */
+            text-align: center; /* Centrar el contenido horizontalmente */
+            padding: 21px 0; /* Espacio interno en la parte superior e inferior */
+            font-size: 24px; /* Tamaño de fuente */
+            text-transform: uppercase; /* Convertir el texto en mayúsculas */
+        }
+
+        /* Estilo para el botón de volver */
+        .volver-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 40px; /* Ancho del botón */
+            height: 40px; /* Altura del botón */
+            background-color: #333; /* Color de fondo del botón */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            border-radius: 50%; /* Hace que el botón sea circular */
+        }
+
+        /* Estilo para la flecha dentro del botón */
+        .volver-button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 12px 8px 0; /* Cambia los valores para apuntar hacia la izquierda */
+            border-color: transparent white transparent transparent; /* Cambia los valores para apuntar hacia la izquierda */
+        }
+
+        body {
+            margin: 0; /* Elimina el margen predeterminado del cuerpo del documento */
+            text-align: left; /* Alinea el contenido a la izquierda */
+            padding: 0; /* Elimina el relleno predeterminado del cuerpo del documento */
+            background: linear-gradient(to bottom, #240936, #552010); /* Fondo con degradado */
+        }
+
+        .content {
+            max-width: 800px; /* Ancho máximo del contenido */
+            margin: 50px auto 0 50px; /* Ajusta la posición vertical y horizontal */
+        }
+
+        img {
+            width: 200px; /* Ajusta el ancho de la imagen según tus necesidades */
+            height: 85%; /* Mantiene la proporción de la imagen */
+            display: block; /* Elimina cualquier espacio en blanco debajo de la imagen */
+            margin-bottom: 20px; /* Espacio entre la imagen y el texto */
+            margin-left: -25px; /* Izquierda */
+
+        }
+
+        p {
+            font-size: 20px; /* Tamaño de fuente más grande */
+            color: white; /* Color blanco para el texto */
+            margin-top: -15px;
+        }
+    </style>
+</head>
+<body>
+    <a class="volver-button" href="dashboard.html"></a>
+    
+    <div class="juegos-header">
+        JUEGOS
+    </div>
+
+    <div class="content">
+        <a href="C:\Users\Tommy\Desktop\Mi Pagina Web\Counter Streike 1.6\Counter Strike 1.6.html">
+            <img src="C:\Users\Tommy\Desktop\Mi Pagina Web\Counter Streike 1.6\Counter Strike.ico" alt="Counter Strike 1.6">
+        </a>
+        <p>Counter Strike 1.6</p>
+    </div>
+</body>
+</html>

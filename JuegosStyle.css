@@ -1,0 +1,9 @@
+/* Estilo para el fondo degradado */
+body {
+    background: linear-gradient(to bottom, #492750, #2980b9); /* Cambia los colores según tus preferencias */
+    /* Otros estilos para el cuerpo de la página */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    /* Ajusta otros estilos según tus necesidades */
+}

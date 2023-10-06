@@ -1,0 +1,15 @@
+/* Estilo para el botón */
+.download-button {
+    background-color: green; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    padding: 10px 11px; /* Espaciado interno del botón reducido (5px arriba/abajo, 10px izquierda/derecha) */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    text-decoration: none; /* Elimina la decoración de texto del enlace */
+    border-radius: 10px; /* Agrega bordes redondeados */
+    display: block; /* Hacer que el botón sea un bloque para ocupar todo el ancho */
+    margin-top: 10px; /* Agrega espacio arriba del botón */
+    max-width: 150px; /* Ancho máximo del botón (ajusta según sea necesario) */
+    text-align: center; /* Centra el texto horizontalmente dentro del botón */
+    margin-left: 125px;
+}
