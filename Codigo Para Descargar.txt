@@ -1,2 +1,0 @@
-<a href="ruta/al/archivo.zip" download>Descargar Juego 1</a>
-<a href="ruta/al/otro-archivo.rar" download>Descargar Juego 2</a>
