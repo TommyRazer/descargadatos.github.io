@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./layout/styles/LoginStyles.css">
+    <title>Iniciar sesión</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+    
+        /* Estilo para el contenedor circular de la imagen de perfil */
+        .profile-image-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 12px auto; /* Ajusta la separación entre la imagen y el texto y centra horizontalmente */
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+        }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajustar la imagen al tamaño del contenedor sin deformarla */
+        }
+
+        /* Estilo para el mensaje de error */
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Estilo para el spinner */
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Agrega un estilo para la transición de la página */
+        body.transitioning {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Iniciar sesión</h1>
+    <form method="post" id="login-form">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" required><br>
+        
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <!-- Contenedor circular para la imagen de perfil -->
+        <div class="profile-image-container">
+            <img src="../besloor/images/Perfil Foto.png" alt="Foto de perfil" id="profile-image">
+            <label for="profile-picture" class="profile-label">
+                <input type="file" id="profile-picture" accept="image/*" style="display: none;">
+                <i class="fas fa-pencil-alt"></i>
+            </label>
+        </div>
+        
+        <input type="submit" value="Iniciar sesión" id="login-button">
+    </form>
+
+    <!-- Hipervínculo para Registrarse -->
+    <p style="text-align: center;">¿No tienes una cuenta? <a href="">Registrarse</a></p>
+
+    <!-- Spinner oculto por defecto -->
+    <div class="spinner-container" id="spinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Mensaje de error -->
+    <div class="error-message" id="error-message" style="display: none;">
+        Usuario o contraseña incorrectos.
+    </div>
+
+    <!-- Script para mostrar la imagen de perfil seleccionada y procesar el formulario -->
+    <script>
+        // Función para mostrar la imagen de perfil seleccionada
+        document.getElementById('profile-picture').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const profileImage = document.getElementById('profile-image');
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Define las credenciales válidas
+        const validCredentials = [
+            { username: "Tommy", password: "admin" },
+            { username: "Usuario", password: "admin" }
+        ];
+
+        // Procesa el formulario de inicio de sesión
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Comprueba las credenciales ingresadas
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Comprueba si las credenciales coinciden con las válidas
+            const isValidCredentials = validCredentials.some(cred => cred.username === username && cred.password === password);
+
+            if (isValidCredentials){
+                // Credenciales válidas, muestra el spinner
+                document.getElementById('login-button').style.display = 'none';
+                document.getElementById('spinner').style.display = 'block';
+
+                // Gira el spinner durante un período de tiempo
+                setTimeout(function() {
+                    // Después de girar el spinner, agrega la clase de transición
+                    document.body.classList.add('transitioning');
+                }, 1000); // Puedes ajustar el tiempo de giro del spinner según tus necesidades
+
+                // Simula una demora antes de redirigir al usuario
+                setTimeout(function() {
+                    // Redirige al usuario al dashboard
+                    window.location.href = 'dashboard.html?nombre-usuario=' + encodeURIComponent(username);
+                }, 2000); // Puedes ajustar el tiempo de demora después del giro del spinner según tus necesidades
+            } else {
+                // Credenciales incorrectas, muestra el mensaje de error
+                document.getElementById('error-message').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
